@@ -1,0 +1,11 @@
+C:\Users\WhiteyBear\Desktop\SpaceShip\bin\Debug\netcoreapp2.0\spaceship.deps.json
+C:\Users\WhiteyBear\Desktop\SpaceShip\bin\Debug\netcoreapp2.0\spaceship.runtimeconfig.json
+C:\Users\WhiteyBear\Desktop\SpaceShip\bin\Debug\netcoreapp2.0\spaceship.runtimeconfig.dev.json
+C:\Users\WhiteyBear\Desktop\SpaceShip\bin\Debug\netcoreapp2.0\spaceship.dll
+C:\Users\WhiteyBear\Desktop\SpaceShip\bin\Debug\netcoreapp2.0\spaceship.pdb
+C:\Users\WhiteyBear\Desktop\SpaceShip\obj\Debug\netcoreapp2.0\spaceship.csprojAssemblyReference.cache
+C:\Users\WhiteyBear\Desktop\SpaceShip\obj\Debug\netcoreapp2.0\spaceship.csproj.CoreCompileInputs.cache
+C:\Users\WhiteyBear\Desktop\SpaceShip\obj\Debug\netcoreapp2.0\spaceship.AssemblyInfoInputs.cache
+C:\Users\WhiteyBear\Desktop\SpaceShip\obj\Debug\netcoreapp2.0\spaceship.AssemblyInfo.cs
+C:\Users\WhiteyBear\Desktop\SpaceShip\obj\Debug\netcoreapp2.0\spaceship.dll
+C:\Users\WhiteyBear\Desktop\SpaceShip\obj\Debug\netcoreapp2.0\spaceship.pdb

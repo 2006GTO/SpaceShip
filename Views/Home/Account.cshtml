@@ -1,0 +1,131 @@
+@model ViewModel
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">spaceship</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Game">Play!</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Wall">Smack Wall</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+<div class="wrapper">
+<div class="box accounttop">
+    <div class="edit_info">
+      @TempData["success"]
+        <form asp-area="" asp-controller="Home" asp-action="Update" method="post">
+        <div class="form-group">
+            <h3>Edit Info</h3>
+            Username: <span style="color:red;" asp-validation-for="editUser.Username" ></span><input class="form-control" type="text" asp-for="editUser.Username" value="@ViewBag.name">
+
+            Profile Picture: <span style="color:red;" asp-validation-for="editUser.editImage" ></span><input class="form-control" type="text" asp-for="editUser.editImage" placeholder="place your direct link to your profile picture here...">
+            
+            Password: <span style="color:red;" asp-validation-for="editUser.editPassword"></span><input type="password" asp-for="editUser.editPassword" class="form-control" placeholder="Current Password">
+
+            Password Confirm: <span style="color:red;" asp-validation-for="editUser.editConfirmPassword"></span><input type="password" asp-for="editUser.editConfirmPassword" class="form-control">
+            
+            <button type="submit" class="btn btn-success">Update Yo!</button>
+        </div>
+    </form></div>
+
+@if (@ViewBag.picture != null){
+<img class="accountpic" src="@ViewBag.picture" alt="Profile Picture">}
+else{<img class="accountpic"  src="https://upload.wikimedia.org/wikipedia/en/1/12/Yellow_Smiley_Face.png" alt="Smiley Face!">}
+
+
+    </div>
+<div class="box footer">
+    
+        <div class="edit_info">
+        <table class="table">
+            <h3>My Top 5 Scores</h3>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>1,000,000</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>926,800</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>867,530</td>
+    </tr>
+        <tr>
+      <th scope="row">4</th>
+      <td>123,456</td>
+    </tr>
+        <tr>
+      <th scope="row">5</th>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+    <div class="edit_info">
+<table class="table table-responsive">
+  <thead>
+    <H2>@ViewBag.name's Most Recent Posts</H2>
+    <tr>
+      <th scope="col">Post</th>
+      <th scope="col">Likes</th>
+    </tr>
+  </thead>
+  <tbody>
+     @foreach(var i in ViewBag.posts){
+       if(ViewBag.id == @i.Poster.Userid){
+    <tr class="posting">
+        <td>"@i.Message"</td>
+        <td>@i.Post_Likes.Count Likes</td>  
+        @if(ViewBag.id == @i.Userid){
+            <td>You posted this...<a href="Delete/@i.Postid">Delete</a></td>
+        }
+        else{ 
+            int Count = 0;
+            @foreach(var j in @i.Post_Likes){
+                @if(@j.Userid == ViewBag.id){
+                    Count = 1;
+                }
+            }
+            if(Count == 1){
+                <td>You liked this!!!</td>
+            }
+            else {
+                <td><a href="Like/@i.Postid/Account">Like!!!</a></td>
+            }
+        }
+    </tr>
+   
+        }
+        continue;
+     }
+  </tbody>
+</table>
+
+
+
+    </div>
+    
+    </div>
+</div>

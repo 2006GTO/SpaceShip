@@ -1,0 +1,10 @@
+@{Layout = null;}
+    @model ViewModel
+    <form asp-controller="Home" id="sub_reg" asp-action="Login" method="post">
+        <h3>Login</h3>
+        <div class="form-group">    
+        Username:   <span style="color:red;" asp-validation-for="loginUser.LogUsername"></span>  <input class="form-control"  asp-for="loginUser.LogUsername" placeholder="...limited to 255 characters"></textarea>    
+        Password: <span style="color:red;" asp-validation-for="loginUser.LogPassword"></span><input type="password" asp-for="loginUser.LogPassword" class="form-control">    
+        <button type="submit" class="btn log_submit btn-success">Submit</button>
+        </div>
+    </form>

@@ -1,6 +1,51 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+img{
+    width: 99%;
+}
+
+body {
+    padding-top: 3.25em;
+    padding-bottom: .5em;
+    margin: 1em;
+    max-width: 100%;
+    min-height: 95%
+}
+
+.posting {
+    background-color: darkgrey;
+}
+
+.commenting {
+    background-color: maroon;
+    color: white;
+}
+
+#login, #reg{
+    min-width: 100%;
+    height: auto;
+    border-radius: 5%;
+    margin-bottom: 10%;
+    font-size: 170%;
+}
+
+/* tr {
+    border: 5px solid black;
+} */
+
+#hide-b {
+    z-index: 1;
+    display: flex;
+}
+
+.accountpic{
+    display: inline-block;
+    margin: 5%;
+    width: 35%;
+}
+.edit_info{
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
 }
 
 /* Wrapping element */
@@ -9,27 +54,101 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+  
+  .sidebar {
+          grid-area: sidebar;
+      }
+  
+      .sidebar2 {
+          grid-area: sidebar2;
+      }
+  
+      .content {
+          grid-area: content;
+      }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
+      .game {
+        grid-row-start: sidebar;
+        grid-column-start: sidebar;
+        grid-row-end: sidebar;
+        grid-column-end: content;
+      }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
+      .accounttop {
+        grid-row-start: header;
+        grid-column-start: sidebar;
+        grid-row-end: sidebar2;
+        grid-column-end: sidebar2; 
+      }
+  
+      .header {
+          grid-area: header;
+      }
+  
+      .footer {
+          grid-area: footer;
+      }
+  
+      .wrapper {
+          background-color: #fff;
+          color: #444;
+      }
+  
+    .wrapper {
+      display: grid;
+      grid-gap: 1em;
+      grid-template-areas:
+       "header"
+       "content"
+       "sidebar"
+       "sidebar2"
+       "footer"
     }
-}
+  
+      @media only screen and (min-width: 600px)  {
+      .wrapper {
+  
+          grid-template-columns: 20% auto;
+          grid-template-areas:
+         "header   header"
+          "content  content"
+          "sidebar sidebar"
+          "sidebar2 sidebar2"
+          "footer   footer";
+      }
+      }
+  
+      @media only screen and (min-width: 1000px)   {
+          .wrapper {
+        /* grid-gap: 20px; */
+            grid-template-columns: 20% auto 20%;
+            grid-template-areas:
+            "header  header  header"
+            "sidebar content sidebar2"
+            "footer  footer  footer";
+            max-width: 99%;
+          }
+      }
+  
+  .box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 150%; 
+  }
+
+  .content {
+      min-height: 85%;
+      grid-column: 2;
+  }
+  
+  .header,
+  .footer {
+    background-color: #999;
+  }
+  
+  .sidebar2 {
+    background-color: #ccc;
+    color: #444;
+  }

@@ -1,0 +1,73 @@
+@{Layout = null;}
+    @model ViewModel
+<div id="smack" class="container">
+<table class="table">
+<thead>
+    <tr>
+        <th><h1>Recent SmackTalk!</h1></th>
+    </tr>
+</thead>
+<tbody>
+    @foreach(var i in ViewBag.posts){
+    <tr class="posting">
+        <td><h3>@i.Poster.Username said:</h3>"@i.Message"</td>
+        <td>@i.Ago</td>
+        <td>@i.Post_Likes.Count Likes</td>  
+        @if(ViewBag.id == @i.Userid){
+            <td>You posted this...<a href="Delete/@i.Postid">Delete</a></td>
+        }
+        else{ 
+            int Count = 0;
+            @foreach(var j in @i.Post_Likes){
+                @if(@j.Userid == ViewBag.id){
+                    Count = 1;
+                }
+            }
+            if(Count == 1){
+                <td>You liked this!!!</td>
+            }
+            else {
+                <td><a href="Like/@i.Postid/Wall">Like!!!</a></td>
+            }
+        }
+    
+    <td>
+        <form asp-action="addComment" id="newcomm" asp-controller="Home" method="post">
+        <span style="color:red;" asp-validation-for="Comment.Text"></span>
+        <input type="text" asp-for="Comment.Text">
+        <input type="hidden" name="post_id" value="@i.Postid">
+        <button type="submit" id="commbtn" class="btn btn-primary">
+        Comment</button>
+        </form>
+    </td>
+    </tr>
+    @if(i.Comments != null){
+    @foreach(var comment in i.Comments){
+    <tr class="commenting">
+        <td>
+           <h4>@comment.Commenter.Username replied with:</h4> "@comment.Text"
+        </td>
+        <td>@comment.Ago</td>
+        <td>@comment.Comment_Likes.Count Likes</td>  
+        @if(ViewBag.id == @comment.Userid){
+            <td>You posted this...<a href="Delete_Comment/@comment.Commentid">Delete</a></td>
+        }
+        else{ 
+            int Count = 0;
+            @foreach(var j in @comment.Comment_Likes){
+                @if(@j.Userid == ViewBag.id){
+                    Count = 1;
+                }
+            }
+            if(Count == 1){
+                <td>You liked this!!!</td>
+            }
+            else {
+                <td><a href="Like_Comment/@comment.Commentid">Like!!!</a></td>
+            }
+        }
+    </tr>}}
+        }
+</tbody>
+</table>
+</div>

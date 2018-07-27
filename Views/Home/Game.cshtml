@@ -1,0 +1,115 @@
+@model ViewModel 
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">spaceship</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Account">My Account</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Wall">Smack Wall</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+<!-- <div class="box header">Header</div> -->
+<!-- <div class="box sidebar">Sidebar</div> -->
+<div class="box sidebar2">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>The Machine</td>
+      <td>1,000,000</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Puff Daddy</td>
+      <td>926,800</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Bo Diddly</td>
+      <td>867,530</td>
+    </tr>
+        <tr>
+      <th scope="row">4</th>
+      <td>Mike Typhson</td>
+      <td>123,456</td>
+    </tr>
+        <tr>
+      <th scope="row">5</th>
+      <td>Glassjaw Joe</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="table table-responsive commenting">
+  <thead>
+    <H2 class="commenting">Hottest Posts!!!</H2>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Post</th>
+    </tr>
+  </thead>
+  <tbody>
+     @foreach(var i in ViewBag.posts){
+    <tr class="commenting">
+        <td><h3>@i.Poster.Username</h3></td>
+        <td>"@i.Message"</td>
+        <td>@i.Post_Likes.Count Likes</td>  
+        @if(ViewBag.id == @i.Userid){
+            <td>You posted this...<a href="Delete/@i.Postid">Delete</a></td>
+        }
+        else{ 
+            int Count = 0;
+            @foreach(var j in @i.Post_Likes){
+                @if(@j.Userid == ViewBag.id){
+                    Count = 1;
+                }
+            }
+            if(Count == 1){
+                <td>You liked this!!!</td>
+            }
+            else {
+                <td><a href="Like/@i.Postid/game">Like!!!</a></td>
+            }
+        }
+    </tr>
+   
+        }
+  </tbody>
+</table>
+
+</div>
+<div class="box game">
+  <object id="UnityObject" classid="clsid:444785F1-DE89-4295-863A-D46C3A781394"
+        width="420" height="750"
+        codebase="http://webplayer.unity3d.com/download_webplayer/UnityWebPlayer.cab#version=2,0,0,0">
+    <param name="https://cipzbnl5ageg0etftahuww-on.drv.tw/SpaceShips/" />
+    <embed id="UnityEmbed" src="https://cipzbnl5ageg0etftahuww-on.drv.tw/SpaceShips/ " width="950" height="700"
+    type="application/vnd.unity" pluginspage="http://www.unity3d.com/unity-web-player-2.x" />
+    </object>
+  <!-- <img src="~/images/exploding_ships.jpg" alt="Exploding Spaceships"> -->
+</div>
+<!-- <div class="box footer">Footer</div> -->
+</div>
